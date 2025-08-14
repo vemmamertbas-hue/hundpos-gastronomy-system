@@ -1,14 +1,16 @@
-import { Clock, User } from "lucide-react";
+import { Clock, User, LogOut } from "lucide-react";
 import { useState, useEffect } from "react";
-import hundposLogo from "@/assets/hundpos-logo.png";
+import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/useAuth";
+import hundposLogo from "@/assets/hundpos-dog-logo.png";
 
 interface PosHeaderProps {
-  currentUser?: string;
   businessName?: string;
 }
 
-export function PosHeader({ currentUser = "Kassier", businessName = "HundPos Restaurant" }: PosHeaderProps) {
+export function PosHeader({ businessName = "HundPos Restaurant" }: PosHeaderProps) {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -42,7 +44,15 @@ export function PosHeader({ currentUser = "Kassier", businessName = "HundPos Res
         
         <div className="flex items-center gap-2 text-muted-foreground">
           <User className="h-4 w-4" />
-          <span className="text-sm">{currentUser}</span>
+          <span className="text-sm">{user?.email}</span>
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={signOut}
+            className="ml-2"
+          >
+            <LogOut className="h-4 w-4" />
+          </Button>
         </div>
 
         <div className="text-right">

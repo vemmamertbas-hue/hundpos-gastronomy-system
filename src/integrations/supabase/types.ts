@@ -14,6 +14,87 @@ export type Database = {
   }
   public: {
     Tables: {
+      menu_items: {
+        Row: {
+          available: boolean
+          category: string
+          created_at: string
+          id: string
+          name: string
+          price: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          available?: boolean
+          category: string
+          created_at?: string
+          id?: string
+          name: string
+          price: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          available?: boolean
+          category?: string
+          created_at?: string
+          id?: string
+          name?: string
+          price?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          created_at: string
+          discount: number
+          id: string
+          items: Json
+          order_number: number
+          payment_method: string | null
+          platform: string
+          status: string
+          subtotal: number
+          table_id: string | null
+          total: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          discount?: number
+          id?: string
+          items?: Json
+          order_number: number
+          payment_method?: string | null
+          platform?: string
+          status?: string
+          subtotal?: number
+          table_id?: string | null
+          total?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          discount?: number
+          id?: string
+          items?: Json
+          order_number?: number
+          payment_method?: string | null
+          platform?: string
+          status?: string
+          subtotal?: number
+          table_id?: string | null
+          total?: number
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           created_at: string
@@ -75,6 +156,39 @@ export type Database = {
           scope_of_work?: string
           status?: string
           timeline?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      tables: {
+        Row: {
+          capacity: number
+          created_at: string
+          id: string
+          name: string
+          status: string
+          table_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          capacity?: number
+          created_at?: string
+          id?: string
+          name: string
+          status?: string
+          table_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          capacity?: number
+          created_at?: string
+          id?: string
+          name?: string
+          status?: string
+          table_id?: string
           updated_at?: string
           user_id?: string
         }
